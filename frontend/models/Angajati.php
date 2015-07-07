@@ -74,6 +74,10 @@ class Angajati extends \yii\db\ActiveRecord
         return $this->hasMany(Amanetare::className(), ['cod_angajat' => 'cod_angajat']);
     }
 
+    public function getNumePrenume()
+    {
+        return $this->nume . ' '. $this->prenume;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

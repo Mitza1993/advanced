@@ -40,6 +40,16 @@ class AngajatiController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionIndex2()
+    {
+        $searchModel = new Angajati_Search();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index2', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single Angajati model.
@@ -53,6 +63,8 @@ class AngajatiController extends Controller
         ]);
     }
 
+
+    
     /**
      * Creates a new Angajati model.
      * If creation is successful, the browser will be redirected to the 'view' page.

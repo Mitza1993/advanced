@@ -5,6 +5,9 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use  frontend\models\Produse;
 use frontend\models\Clienti;
+use frontend\controllers\ProduseController;
+use kartik\select2\Select2;
+
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Amanetare */
@@ -13,31 +16,39 @@ use frontend\models\Clienti;
 
 <div class="amanetare-form row">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['enableAjaxValidation'=>true]); ?>
     <div class="row">
         <div class="col-md-6">
-         <?= $form->field($model, 'id_client')->dropDownList(
-        ArrayHelper::map(Clienti::find()->all(),'_id','nume','prenume'))
-        
+         <?=  $form->field($model, 'id_client')->widget(Select2::classname(), [
+    'data' => ArrayHelper::map(Clienti::find()->all(),'_id','prenume','nume'),
+    'language' => 'en',
+    'options' => ['placeholder' => 'Cautati dupa umele clientului'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+]); ?>
+      <?php  
+    $produss= ProduseController::findModel($model->cod_produs);
+
+    echo  $form->field($produss, 'denumire')->textInput(['readonly'=>true])->label('Denumirea produsului');
      ?>
-     <?php 
-     $produss= new Produse();
+
+     
+
     
-    echo  $form->field($model, 'cod_produs')->dropDownList(ArrayHelper::map($produss::findBySql("SELECT * FROM Produse WHERE situatie ='in stoc'")->all(),'_cod','denumire'),
-        ['prompt'=>'Selectati produsul']);
-     ?>
 
      <?= $form->field($model, 'alte_specificatii')->textarea(['rows' => 6]) ?>
     </div>
 
-    
 
      <div class="col-md-6"> 
      <?= $form->field($model, 'suma_acordata')->textInput() ?>
 
-    <?= $form->field($model, 'suma_datorata')->textInput() ?>
+    
+    
 
-    <?= $form->field($model, 'data_rambursarii')->textInput() ?>
+     
+
 
     <?= $form->field($model, 'comisionul_lunar')->textInput() ?>
 

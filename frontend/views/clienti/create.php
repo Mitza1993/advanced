@@ -16,6 +16,8 @@ $this->title = 'Adaugare Client';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'model2'=>$model2,
+        'model3S'=>$model3,
     ]) ?>
 
 </div>

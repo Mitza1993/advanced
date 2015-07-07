@@ -17,6 +17,7 @@ $this->title = 'Contract nou';
 
     <?= $this->render('_form', [
         'model' => $model,
+     
     ]) ?>
 
 </div>

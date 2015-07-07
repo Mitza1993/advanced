@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model frontend\models\Produse */
 
 $this->title = 'Modifica produsul ' . ' ' ;
-//$this->params['breadcrumbs'][] = ['label' => 'Produse', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = ['label' => $model->_cod, 'url' => ['view', 'id' => $model->_cod]];
-//$this->params['breadcrumbs'][] = 'Modifica';
+$this->params['breadcrumbs'][] = ['label' => 'Produse', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->_cod, 'url' => ['view', 'id' => $model->_cod]];
+$this->params['breadcrumbs'][] = 'Modifica';
 ?>
 <div class="produse-update">
 

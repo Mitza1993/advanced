@@ -26,7 +26,7 @@ use common\models\User;
 
     <?= $form->field($model, 'telefon')->textInput(['maxlength' => 10]) ?>
 
-    <?= $form->field($model, 'data_angajarii')->textInput() ?>
+    <?= $form->field($model, 'data_angajarii')->textInput(['class'=> 'has-datepicker']) ?>
 
 
 

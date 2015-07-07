@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
+<div class="site-login col-md-6 col-md-offset-3">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Introduceti-va datele de logare:</p>
@@ -21,12 +21,16 @@ $this->title = 'Login';
                 <?= $form->field($model, 'password')->passwordInput() ?>
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
                 <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                   Daca v-ati uitat parola o puteti reseta accesand acest <?= Html::a('link', ['site/request-password-reset']) ?>.
                 </div>
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-            <?php ActiveForm::end(); ?>
+                
+            
         </div>
+         <div class="col-xs-6">
+         <div class="form-group">
+                    <?= Html::submitButton('Login', ['class' => 'btn-lg btn-success my-button', 'name' => 'login-button']) ?>
+                </div>
+        </div>
+        <?php ActiveForm::end(); ?>
     </div>
 </div>

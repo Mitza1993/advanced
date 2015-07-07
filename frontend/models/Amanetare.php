@@ -5,6 +5,7 @@ use frontend\controllers\ProduseController;
 use frontend\controllers\ClientiController;
 use frontend\controllers\AngajatiController;
 use frontend\models\Tranzactie;
+use \DateTime;
 
 use Yii;
 
@@ -27,11 +28,13 @@ use Yii;
  * @property Angajati $codAngajat
  * @property Tranzactie[] $tranzacties
  */
-class Amanetare extends \yii\db\ActiveRecord
+class Amanetare extends \yii\db\ActiveRecord 
 {
     /**
      * @inheritdoc
      */
+
+
     public static function tableName()
     {
         return 'amanetare';
@@ -43,13 +46,14 @@ class Amanetare extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_angajat', 'id_client', 'suma_acordata', 'suma_datorata', 'data_rambursarii', 'comisionul_lunar', 'alte_specificatii', 'cod_produs'], 'required'],
-            [['cod_angajat', 'id_client', 'cod_produs'], 'integer'],
-            [['data_incheierii', 'data_rambursarii'], 'safe'],
-            [['suma_acordata', 'suma_datorata', 'comisionul_lunar'], 'number'],
+            [['cod_angajat','suma_acordata', 'suma_datorata', 'comisionul_lunar', 'alte_specificatii', 'cod_produs'], 'required','message'=>'Campul {attribute} nu poate fi gol.'],
+            // [['cod_angajat',  'cod_produs'], 'integer'],
+            [['data_incheierii', 'id_client'], 'safe'],
+            [['suma_acordata', 'suma_datorata', 'comisionul_lunar'], 'number','message'=>'{attribute} este format doar din cifre.'],
             [['alte_specificatii'], 'string']
         ];
     }
+
 
     /**
      * @inheritdoc
@@ -58,13 +62,12 @@ class Amanetare extends \yii\db\ActiveRecord
     {
         return [
             'cod_contract' => 'Cod Contract',
-            'cod_angajat' => 'Cod Angajat',
-            'id_client' => 'Numele clientului',
+            'cod_angajat' => 'Nume angajat',
+            'id_client' => 'Nume ',
             'data_incheierii' => 'Data Incheierii',
-            'suma_acordata' => 'Suma acordata',
-            'suma_datorata' => 'Suma datorata',
-            'data_rambursarii' => 'Data rambursarii',
-            'comisionul_lunar' => 'Comision',
+            'suma_acordata' => 'Suma acordata (lei)',
+            'suma_datorata' => 'Suma datorata (lei)',
+            'comisionul_lunar' => 'Comision (lei)',
             'alte_specificatii' => 'Alte specificatii',
             'cod_produs' => 'Produsul contractat',
         ];
@@ -77,8 +80,10 @@ class Amanetare extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Produse::className(), ['_cod' => 'cod_produs']);
     }
+    //get Produse
 
-    public function getProdus($id)
+
+    public function getProdusDenumire($id)
     {
         
         $produs = ProduseController::findModel($id);
@@ -86,7 +91,24 @@ class Amanetare extends \yii\db\ActiveRecord
         return $denumire;
     }
 
-     public function getClient($id2)
+    public function getProdusUM($id)
+    {
+        
+        $produs = ProduseController::findModel($id);
+        $UM = $produs->unitate;
+        return $UM;
+    }
+
+    public function getProdusCantitate($id)
+    {
+        
+        $produs = ProduseController::findModel($id);
+        $cantitate = $produs->cantitate;
+        return $cantitate;
+    }
+
+
+     public function getClientNume($id2)
     {
         
         $client = ClientiController::findModel($id2);
@@ -94,6 +116,21 @@ class Amanetare extends \yii\db\ActiveRecord
         $prenume= $client->prenume;
         return $nume ."  ". $prenume;
     }
+    public function getClientAdresa($id2)
+    {
+        
+        $client = ClientiController::findModel($id2);
+        $adresa = $client->adresa;
+        return $adresa;
+    }
+    public function getClientSerie($id2)
+    {
+        
+        $client = ClientiController::findModel($id2);
+        $serie= $client->seria_ci;
+        return $serie;
+    }
+
 
      public function getAngajat($id2)
     {
@@ -130,66 +167,49 @@ class Amanetare extends \yii\db\ActiveRecord
     }
 
 
-    public function actualizareProduse()
-     {
-        $models = Amanetare::find()->all();
-         $arr=array();
-       
-         foreach ($models as $m) {
-                $time = new \DateTime('now');
-                $today=$time->format('Y-m-d');
-             
-            $tranzactie = Tranzactie::findOne(['cod_contract_amanetare'=>$m->cod_contract]);
-            $tPlata = Tranzactie::find()->where(['cod_contract_amanetare'=>  $m->cod_contract,'tip_tranzactie' => 'Plata finala'])->all();                         
-            $tRata = Tranzactie::find()->where(['cod_contract_amanetare'=>  $m->cod_contract, 'tip_tranzactie' => 'Rata'])->all();
-            $produs = Produse::findOne($m->cod_produs);
-            $rata =0;
-            $arr_length=count($tRata);
-            for($i=0;$i<$arr_length;$i++)
-            {
-                $rata = $rata+ $tRata[$i]->suma;
-                
+    public function calculZile($cod_contract)
+    {
+                $tranzactii = Tranzactie::find()->where(['cod_contract_amanetare' => $cod_contract])->all();
+                 $produs = Produse::find()->where(['_cod' => $this->cod_produs])->one();
+ 
+                $zile = 0;
+                 $suma_platita = 0;
+                 $tranzactie_prelungire = 0;
+             foreach ($tranzactii as $key => $value) {
 
-            }
-            
-
-            $plata =0;
-            $arr_length2=count($tPlata);
-            for($i=0;$i<$arr_length2;$i++)
-            {
-                $plata = $plata+ $tPlata[$i]->suma;
-            }
-
-            //cazul ratei
-            if($today > $m->data_rambursarii)
-            {
-                if($rata < $m->suma_datorata || $plata < $m->suma_datorata)
-                {
-                    $produs->situatie="in stoc";
-                    $produs->save();
-                }
-                else
-                    if($rata == $m->suma_datorata || $plata == $m->suma_datorata)
-                    {
-                        $produs->situatie="returnat";
-                        $produs->save();
-                    }
-            }   
-            else 
-            if ($today <= $m->data_rambursarii)
-            {
-                    if($rata == $m->suma_datorata || $plata == $m->suma_datorata)
-                    {
-                        $produs->situatie="returnat";
-                        $produs->save();
-                    }
-                    else{
-                $produs->situatie="amanetare";
-                $produs->save();}
-            }          
-    
+                if($value->tip_tranzactie != 'Prelungire') {
+                   $suma_platita = $value->suma;
+                } else {
+                $tranzactie_prelungire = 1;
+                $tranzactie = $value;
+             }
          }
-     
-     }
 
+                if($suma_platita != $this->suma_datorata && $produs->situatie == 'amanetare')
+                {
+                    $today = new DateTime('now');
+                    $data_incheierii = new Datetime($this->data_incheierii);    
+                    $zile = $today->diff($data_incheierii)->format("%a");
+                     
+                      //  return 30-$zile;
+
+                    if($zile < 30 && $tranzactie_prelungire == 0) {
+               
+                         return 30-$zile;
+                
+            } else if($zile <= 30 && $tranzactie_prelungire != 0 && $tranzactie->suma == $this->comisionul_lunar){
+                $data_tranzactie_prelungire = new DateTime($tranzactie->data);
+
+                $zile = $today->diff($data_tranzactie_prelungire)->format("%a");
+                return 30-$zile;
+                }
+                   
+    }
+    else
+    {
+        return 'Contractul a fost incheiat';
+    }
+
+   
+}
 }

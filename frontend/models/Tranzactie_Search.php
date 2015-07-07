@@ -67,4 +67,32 @@ class Tranzactie_Search extends Tranzactie
 
         return $dataProvider;
     }
+
+    public function search2($params,$cod_contract_amanetare)
+    {
+        $query = Tranzactie::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            '_id' => $this->_id,
+            'cod_contract_amanetare' => $cod_contract_amanetare,
+            'suma' => $this->suma,
+            'data' => $this->data,
+        ]);
+
+        $query->andFilterWhere(['like', 'tip_tranzactie', $this->tip_tranzactie]);
+
+        return $dataProvider;
+    }
 }

@@ -24,6 +24,9 @@ class Produse extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $file;
+
+
     public static function tableName()
     {
         return 'produse';
@@ -35,12 +38,16 @@ class Produse extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['denumire', 'tip', 'unitate', 'cantitate', 'caracteristici', 'stare', 'situatie'], 'required'],
+            [['denumire', 'tip', 'unitate', 'cantitate', 'caracteristici', 'stare', 'situatie'], 'required','message'=>' Campul {attribute} nu poate fi gol.'],
             [['tip', 'unitate', 'caracteristici', 'stare'], 'string'],
-            [['cantitate'], 'integer'],
+            [['cantitate'], 'number','message'=>'Cantitatea este de tip numeric.'],
+            [['file'],'safe'],
+            [['file'],'file','extensions' =>'jpg,gif,png'],
             [['denumire', 'situatie'], 'string', 'max' => 50]
         ];
     }
+
+
 
     /**
      * @inheritdoc
@@ -56,6 +63,7 @@ class Produse extends \yii\db\ActiveRecord
             'caracteristici' => 'Caracteristici',
             'stare' => 'Stare',
             'situatie' => 'Situatie',
+            'file' => 'Imagine',
         ];
     }
 
@@ -79,4 +87,36 @@ class Produse extends \yii\db\ActiveRecord
     {
         return $this->denumire;
     }
+
+
+
+    public function areContractA($cod)
+        {
+            $contracte = Amanetare::find()->where(['cod_produs'=>$cod])->one();
+            if(is_null($contracte))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public function areContractVZ($cod)
+        {
+            $contracte = VanzareCumparare::find()->where(['cod_produs'=>$cod])->one();
+            if(is_null($contracte))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+    
 }

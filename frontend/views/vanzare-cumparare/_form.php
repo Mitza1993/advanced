@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use frontend\models\Clienti;
 use frontend\models\Produse;
 use frontend\controllers\ProduseController;
+use kartik\select2\Select2;
 
 
 /* @var $this yii\web\View */
@@ -13,51 +14,33 @@ use frontend\controllers\ProduseController;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<head>
-<link rel="stylesheet" type="text/css" href="/web/css/site.css">
-</head>
-
 <div class="vanzare-cumparare-form row">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_client')->dropDownList(
-        ArrayHelper::map(Clienti::find()->all(),'_id','prenume','nume'),
-        ['prompt'=>'Selectati clientul'])
-        
-     ?>
-              <?= $form->field($model, 'tip_tranzactie')->dropDownList([ 'Vanzare' => 'Vanzare', 'Cumparare' => 'Cumparare', ], ['prompt' => '']); ?>
+     <?=  $form->field($model, 'id_client')->widget(Select2::classname(), [
+    'data' => ArrayHelper::map(Clienti::find()->all(),'_id','prenume','nume'),
+    'language' => 'en',
+    'options' => ['placeholder' => 'Cautati dupa numele clientului'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+]); ?>
 
+
+  <?= $form->field($model, 'tip_tranzactie')->dropDownList([ 'Vanzare' => 'Vanzare', 'Cumparare' => 'Cumparare', ], ['prompt' => '']); ?>
 
      <?php  
-    $produss= new Produse();
-    echo  $form->field($model, 'cod_produs')->dropDownList(ArrayHelper::map($produss::findBySql("SELECT * FROM Produse WHERE situatie ='in stoc'")->all(),'_cod','denumire'),
-        ['prompt'=>'Selectati produsul'])
+    $produss= ProduseController::findModel($model->cod_produs);
+
+    echo  $form->field($produss, 'denumire')->textInput(['readonly'=>true])->label('Denumirea produsului');
      ?>
 
      <?= $form->field($model, 'alte_specificatii')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'suma_contractata')->textInput() ?>
-                        <?= Html::submitButton($model->isNewRecord ? 'Adauga' : 'Modifica', ['class' => $model->isNewRecord ? 'btn btn-success  btn-lg ' : 'btn btn-primary']) ?>
-
-
-
-    <div class="col-md-6">
-        
-    
-    </div>
-    <div class="col-md-6">
-
-    
-
-    <div class="btn-vc">
 
     </div>
-
-
-    </div>
-
-
     
 
 
@@ -66,6 +49,7 @@ use frontend\controllers\ProduseController;
    
 
     <div class="form-group">
+     <?= Html::submitButton($model->isNewRecord ? 'Adauga' : 'Modifica', ['class' => $model->isNewRecord ? 'btn btn-success btn-lg' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -31,9 +31,9 @@ class Tranzactie extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_contract_amanetare', 'suma', 'tip_tranzactie'], 'required'],
+            [['cod_contract_amanetare', 'suma', 'tip_tranzactie'], 'required','message'=>'Campul {attribute} nu poate fi gol.'],
             [['cod_contract_amanetare'], 'integer'],
-            [['suma'], 'number'],
+            [['suma'], 'number','message'=>'Introduceti doar valori numerice.'],
             [['data'], 'safe'],
             [['tip_tranzactie'], 'string']
         ];
@@ -60,4 +60,7 @@ class Tranzactie extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Amanetare::className(), ['cod_contract' => 'cod_contract_amanetare']);
     }
+
+
+    
 }

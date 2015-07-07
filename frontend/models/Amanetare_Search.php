@@ -18,8 +18,8 @@ class Amanetare_Search extends Amanetare
     public function rules()
     {
         return [
-            [['cod_contract', 'cod_angajat', 'id_client', 'cod_produs'], 'integer'],
-            [['data_incheierii', 'data_rambursarii', 'alte_specificatii'], 'safe'],
+            [['cod_contract', 'cod_angajat'], 'integer'],
+            [['data_incheierii', 'alte_specificatii', 'id_client', 'cod_produs'], 'safe'],
             [['suma_acordata', 'suma_datorata', 'comisionul_lunar'], 'number'],
         ];
     }
@@ -56,17 +56,19 @@ class Amanetare_Search extends Amanetare
             return $dataProvider;
         }
 
+        $query->joinWith('idClient');
+
         $query->andFilterWhere([
             'cod_contract' => $this->cod_contract,
             'cod_angajat' => $this->cod_angajat,
-            'id_client' => $this->id_client,
             'data_incheierii' => $this->data_incheierii,
             'suma_acordata' => $this->suma_acordata,
             'suma_datorata' => $this->suma_datorata,
-            'data_rambursarii' => $this->data_rambursarii,
             'comisionul_lunar' => $this->comisionul_lunar,
             'cod_produs' => $this->cod_produs,
         ]);
+
+        $query->andFilterWhere(['like', 'clienti.nume', $this->id_client]);
 
         $query->andFilterWhere(['like', 'alte_specificatii', $this->alte_specificatii]);
 

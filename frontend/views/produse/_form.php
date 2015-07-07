@@ -10,8 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="produse-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
     <div class="row">
         <div class="col-md-6">
              <?= $form->field($model, 'denumire')->textInput(['maxlength' => 50]) ?>
@@ -25,24 +24,22 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
 
-    <?= $form->field($model, 'cantitate')->textInput() ?>
+         <?= $form->field($model, 'cantitate')->textInput() ?>
 
-    <?= $form->field($model, 'caracteristici')->textarea(['rows' => 6]) ?>
+         <?= $form->field($model, 'caracteristici')->textarea(['rows' => 6]) ?>
 
-            <?= Html::submitButton($model->isNewRecord ? 'Adauga produs' : 'Modifica', ['class' => $model->isNewRecord ? 'btn btn-success btn-lg' : 'btn btn-primary']) ?>
-
+         <?= $form->field($model, 'file')->fileInput() ?>
+     <?php 
+     if($model->file)
+     {
+      echo '<img src="'.\Yii::$app->request->BaseUrl.'/'.$model->file.'" width="90px">&nbsp;&nbsp;&nbsp;';
+     // echo Html::a
+     }
+     ?>
+     <div class="row">
+                       <?= Html::submitButton($model->isNewRecord ? 'Adauga produs' : 'Modifica', ['class' => $model->isNewRecord ? 'btn btn-success btn-lg' : 'btn btn-primary']) ?>
+     </div>   
         </div>
     </div>
-    <div class="row">
-        <div class="form-group">
-    </div>
-    </div>
-
-   
-
-
-    
-
     <?php ActiveForm::end(); ?>
-
 </div>

@@ -14,11 +14,22 @@ body {
     padding: 70px 15px 20px;
 }
 
+.my-button{
+    background-color: #3A3443;
+    margin-top: 50px;
+}
+.my-nav:hover{
+    background-color: #3A3443;
+}
 .footer {
     height: 60px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
+}
+
+.nav-item{
+    color:#FCD849;
 }
 
 .jumbotron {
@@ -93,3 +104,17 @@ a.desc:after {
 
 /*My CSS code*/
 
+.image{
+    width: 50px;
+    height: 50px;
+}
+
+.ad-tranzactie{
+    margin-left: 25px;
+}
+
+.mygrid{
+    width: 130px;
+    text-align: center;
+
+}

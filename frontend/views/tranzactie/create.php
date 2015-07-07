@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Tranzactie */
 
-$this->title = 'Tranzactie noua';
+
 //$this->params['breadcrumbs'][] = ['label' => 'Tranzactii', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,6 +16,7 @@ $this->title = 'Tranzactie noua';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'client' => $client
     ]) ?>
 
 </div>
