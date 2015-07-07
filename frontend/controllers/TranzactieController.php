@@ -4,16 +4,22 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Tranzactie;
+<<<<<<< HEAD
 use frontend\models\Produse;
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 use frontend\models\Tranzactie_Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\Amanetare;
 use frontend\models\Clienti;
+<<<<<<< HEAD
 use frontend\controllers\ProduseController;
 use \DateTime;
 use \mPDF;
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
 /**
  * TranzactieController implements the CRUD actions for Tranzactie model.
@@ -81,16 +87,20 @@ class TranzactieController extends Controller
         $model = new Tranzactie();
         $model->cod_contract_amanetare=$cod_contract;
 
+<<<<<<< HEAD
          if(Yii::$app->request->isAjax && $model->load($_POST))
         {
             Yii::$app->response->format='json';
             return \yii\widgets\ActiveForm::validate($model);
         }
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         $client = Amanetare::find()->where(['cod_contract' => $cod_contract])->one()->id_client;
         $client = Clienti::find()->where(['_id' => $client])->one();
         $client = $client->nume .' '.$client->prenume;
 
+<<<<<<< HEAD
         $contract = Amanetare::find()->where(['cod_contract' => $cod_contract])->one();
 
         $tranzactii = Tranzactie::find()->where(['cod_contract_amanetare' => $cod_contract])->all();
@@ -140,6 +150,8 @@ class TranzactieController extends Controller
             }
         }
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->_id]);
         } else {
@@ -177,10 +189,16 @@ class TranzactieController extends Controller
      */
     public function actionDelete($id)
     {
+<<<<<<< HEAD
         $model=$this->findModel($id);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index2','cod_contract'=>$model->cod_contract_amanetare]);
+=======
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     }
 
     /**
@@ -198,6 +216,7 @@ class TranzactieController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+<<<<<<< HEAD
 
 
     public function actionCreatepdf4($_id){
@@ -244,4 +263,6 @@ class TranzactieController extends Controller
         // var_dump($raport); die();
         echo $this->renderPartial('tranzactie-pdf', ['data' => $data]);
     }
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 }

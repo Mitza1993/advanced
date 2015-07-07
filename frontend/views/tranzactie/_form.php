@@ -10,6 +10,7 @@ use frontend\models\Amanetare;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+<<<<<<< HEAD
 
 <div class="tranzactie-form col-md-6 col-md-offset-3">
 <h1 style="margin-bottom:20px;">Tranzacție nouă</h1>
@@ -22,6 +23,19 @@ use frontend\models\Amanetare;
    
 
     <?= $form->field($model, 'tip_tranzactie')->dropDownList([ 'Rata' => 'Rata', 'Plata finala' => 'Plata finala', 'Prelungire' => 'Prelungire'], ['prompt' => '']) ?>
+=======
+<div class="tranzactie-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+
+    <input type="text" value="<?php echo $client ?>" disabled>
+
+    <?= $form->field($model, 'suma')->textInput() ?>
+
+    <?= $form->field($model, 'data')->textInput(['class'=> 'has-datepicker']) ?>
+
+    <?= $form->field($model, 'tip_tranzactie')->dropDownList([ 'Rata' => 'Rata', 'Plata finala' => 'Plata finala', ], ['prompt' => '']) ?>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Adauga' : 'Modifica', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

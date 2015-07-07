@@ -25,7 +25,11 @@ $this->title = 'Angajati';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+<<<<<<< HEAD
             'cod_angajat',
+=======
+          //  'cod_angajat',
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             'nume',
             'prenume',
            // 'adresa',

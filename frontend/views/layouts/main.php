@@ -82,10 +82,17 @@ AppAsset::register($this);
                 $menuItems =[
                 ['label' => 'Acasa', 'url' => ['/site/index']],
              
+<<<<<<< HEAD
                 ['label' => 'Adauga user', 'url' => ['/site/signup']],
                 ['label' => 'Administrare ', 'items' => [
                 ['label' => 'Angajati','url' => ['/angajati/index']],
                 ['label' => 'Istoric stergeri','url' => ['/log-stergere/index']],
+=======
+                ['label' => 'Ghid', 'url' => ['/site/contact']],
+               
+                ['label' => 'Administrare ', 'items' => [
+                ['label' => 'Angajati','url' => ['/angajati/index']],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                 ['label' => 'Users','url'=>['/user/index']]]],
                  [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',

@@ -4,9 +4,12 @@ namespace frontend\models;
 
 
 use frontend\controllers\ProduseController;
+<<<<<<< HEAD
 use frontend\controllers\AngajatiController;
 use frontend\controllers\ClientiController;
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 use frontend\models\Clienti;
 use Yii;
 
@@ -43,8 +46,13 @@ class VanzareCumparare extends \yii\db\ActiveRecord
     {
         return [
             [['cod_angajat', 'id_client', 'cod_produs', 'suma_contractata', 'tip_tranzactie', 'alte_specificatii'], 'required','message'=>'Campul {attribute} nu poate fi gol.'],
+<<<<<<< HEAD
             [['cod_angajat','cod_produs'], 'integer'],
             [['data_inchieierii','id_client'], 'safe'],
+=======
+            [['cod_angajat', 'id_client', 'cod_produs'], 'integer'],
+            [['data_inchieierii'], 'safe'],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             [['suma_contractata'], 'number','message'=>'Introduceti doar valori numerice.'],
             [['tip_tranzactie', 'alte_specificatii'], 'string']
         ];
@@ -88,13 +96,18 @@ class VanzareCumparare extends \yii\db\ActiveRecord
         $clienti = Clienti::find()->all();
          $arr=array();
         foreach ($clienti as $c) {
+<<<<<<< HEAD
             return $c->nume ." ". $c->prenume;
+=======
+            return $c->nume . $c->prenume;
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         }
     }
 
      public function getAngajati($cod_angajat)
     {
         $angajat = AngajatiController::findModel($cod_angajat);
+<<<<<<< HEAD
         $nume_prenume = $angajat->nume." ". $angajat->prenume;
         return $nume_prenume;
         }
@@ -105,6 +118,11 @@ class VanzareCumparare extends \yii\db\ActiveRecord
         
         return $angajat->adresa;
         }
+=======
+        $nume_prenume = $angajat->nume. $angajat->prenume;
+        return $nume_prenume;
+        }
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     
     /**
      * @return \yii\db\ActiveQuery
@@ -137,6 +155,7 @@ public static function getTotal($provider, $fieldName)
     }
 
     return $total;
+<<<<<<< HEAD
 }   
 
 public function getProdusDenumire($id)
@@ -222,6 +241,9 @@ public function getProdusDenumire($id)
         $angajat = AngajatiController::findModel($id2);
         return $angajati->seria;
     }
+=======
+}
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
 
 

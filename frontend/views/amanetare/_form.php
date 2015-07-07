@@ -44,11 +44,17 @@ use kartik\select2\Select2;
      <div class="col-md-6"> 
      <?= $form->field($model, 'suma_acordata')->textInput() ?>
 
+<<<<<<< HEAD
     
     
 
      
 
+=======
+    <?= $form->field($model, 'suma_datorata')->textInput() ?>
+
+    <?= $form->field($model, 'data_rambursarii')->textInput(['class'=> 'has-datepicker']) ?>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     <?= $form->field($model, 'comisionul_lunar')->textInput() ?>
 

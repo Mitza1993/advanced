@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Tranzactie */
 
+<<<<<<< HEAD
 $this->title ='Tranzactia nr. :'. $model->_id;
 //$this->params['breadcrumbs'][] = ['label' => 'Tranzacties', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
@@ -25,6 +26,26 @@ $this->title ='Tranzactia nr. :'. $model->_id;
         </tr>
     </table>
     
+=======
+$this->title = $model->_id;
+//$this->params['breadcrumbs'][] = ['label' => 'Tranzacties', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="tranzactie-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Modifica', ['update', 'id' => $model->_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Sterge', ['delete', 'id' => $model->_id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     <?= DetailView::widget([
         'model' => $model,

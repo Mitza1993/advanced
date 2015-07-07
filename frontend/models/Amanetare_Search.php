@@ -19,7 +19,11 @@ class Amanetare_Search extends Amanetare
     {
         return [
             [['cod_contract', 'cod_angajat'], 'integer'],
+<<<<<<< HEAD
             [['data_incheierii', 'alte_specificatii', 'id_client', 'cod_produs'], 'safe'],
+=======
+            [['data_incheierii', 'data_rambursarii', 'alte_specificatii', 'id_client', 'cod_produs'], 'safe'],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             [['suma_acordata', 'suma_datorata', 'comisionul_lunar'], 'number'],
         ];
     }
@@ -64,6 +68,10 @@ class Amanetare_Search extends Amanetare
             'data_incheierii' => $this->data_incheierii,
             'suma_acordata' => $this->suma_acordata,
             'suma_datorata' => $this->suma_datorata,
+<<<<<<< HEAD
+=======
+            'data_rambursarii' => $this->data_rambursarii,
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             'comisionul_lunar' => $this->comisionul_lunar,
             'cod_produs' => $this->cod_produs,
         ]);

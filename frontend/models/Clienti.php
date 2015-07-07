@@ -25,7 +25,10 @@ class Clienti extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     public static function tableName()
     {
         return 'clienti';
@@ -39,20 +42,30 @@ class Clienti extends \yii\db\ActiveRecord
         return [
             [['prenume','nume','cnp_client', 'seria_ci', 'adresa', 'telefon'], 'required','message'=>'Campul {attribute} nu poat fi gol.'],
 
+<<<<<<< HEAD
             //[['telefon'], 'integer','message' =>' Teelefonul trebuie sa contina doar cifre.'],
+=======
+            [['telefon'], 'integer','message' =>' Teelefonul trebuie sa contina doar cifre.'],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             [['nume'], 'string', 'max' => 50],
             ['nume','validatorNume'],
             ['prenume','validatorPrenume'],
             ['seria_ci','validatorSeria'],
             ['telefon','validatorTelefon'],
+<<<<<<< HEAD
             ['telefon','validTelefon'],
             [['prenume', 'adresa'], 'string', 'max' => 100],
            // [['cnp_client'], 'string', 'max' => 13,'min' =>13],
             ['cnp_client','validCNP'],
+=======
+            [['prenume', 'adresa'], 'string', 'max' => 100],
+            [['cnp_client'], 'string', 'max' => 13,'min' =>13],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             [['seria_ci'], 'string', 'max' => 20],
         ];
     }
 
+<<<<<<< HEAD
 
    public function validareCNP($p_cnp) {
     // CNP must have 13 characters
@@ -120,6 +133,19 @@ class Clienti extends \yii\db\ActiveRecord
             $this->addError($attribute,'Telefonul nu este corect.');
         }
     }
+=======
+    // public function rules() 
+    // { 
+    //     return [
+    //         [['nume', 'prenume', 'cnp_client', 'seria_ci', 'adresa', 'telefon'], 'required'],
+    //         [['telefon'], 'integer'],
+    //         [['nume'], 'string', 'max' => 50],
+    //         [['prenume', 'adresa'], 'string', 'max' => 100],
+    //         [['cnp_client'], 'string', 'max' => 13],
+    //         [['seria_ci'], 'string', 'max' => 20]
+    //     ]; 
+    // } 
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     public function validatorNume($attribute,$params)
     {
@@ -134,7 +160,11 @@ class Clienti extends \yii\db\ActiveRecord
         $prenume = $this->prenume;
         if(preg_match('/[^a-zA-Z]/', $prenume))
         {
+<<<<<<< HEAD
             $this->addError($attribute,'Prenumele trebuie sa contina doar liere.');
+=======
+            $this->addError($attribute,'Numele trebuie sa contina doar liere.');
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         }
     }
     public function validatorSeria($attribute,$params)
@@ -150,7 +180,11 @@ class Clienti extends \yii\db\ActiveRecord
         $telefon = $this->telefon;
         if(!ctype_digit($telefon))
         {
+<<<<<<< HEAD
             $this->addError($attribute,'Numarul trebuie sa contina doar cifre.');
+=======
+            $this->addError($attribute,'Numele trebuie sa contina doar liere.');
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         }
     }
 
@@ -164,18 +198,25 @@ class Clienti extends \yii\db\ActiveRecord
             '_id' => 'Id',
             'nume' => 'Nume',
             'prenume' => 'Prenume',
+<<<<<<< HEAD
             'cnp_client' => 'Cnp',
+=======
+            'cnp_client' => 'Cnp Client',
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             'seria_ci' => 'Seria CI',
             'adresa' => 'Adresa',
             'telefon' => 'Telefon',
         ];
     }
 
+<<<<<<< HEAD
     public function getNumePrenume()
     {
         return $this->nume. ' '.$this->prenume;
     }
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     /**
      * @return \yii\db\ActiveQuery
@@ -193,6 +234,26 @@ class Clienti extends \yii\db\ActiveRecord
         return $this->hasMany(VanzareCumparare::className(), ['id_client' => '_id']);
     }
 
+<<<<<<< HEAD
+=======
+    // public function calculDatorie()
+    // {
+    //     $clienti  =Clienti::find()->all();
+    //     $suma_datorata=0;
+
+    //     foreach ($clienti as $c) {
+    //     $c_amanetare = Amanetare::find()->where(['id_client'=>  $c->_id])->all();
+    //         foreach ($c_amanetare as $cp) {
+    //              $tranzactie = Tranzactie::findOne(['cod_contract_amanetare'=>$cp->cod_contract]);
+    //                 $suma_datorata=$cp->suma_datorata- $tranzactie->rata;
+    //         }
+           
+    //         echo $cp->suma_datorata;
+    //         echo $tranzactie->rata;
+    //     }
+
+    // }
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     public function calculDatorie($_id)
     {
@@ -201,7 +262,12 @@ class Clienti extends \yii\db\ActiveRecord
         $amanetari = Amanetare::find()->where(['id_client'=>  $client->_id])->all();                         
         foreach ($amanetari as $a) {
         $tranzactie = Tranzactie::find()->where(['cod_contract_amanetare'=>  $a->cod_contract])->all();  
+<<<<<<< HEAD
         
+=======
+        //$suma_datorata = $a->suma_datorata;
+           // return $t->tip_tranzactie;
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             $tPlata = Tranzactie::find()->where(['cod_contract_amanetare'=>  $a->cod_contract,'tip_tranzactie' => 'Plata finala'])->all();                         
             $tRata = Tranzactie::find()->where(['cod_contract_amanetare'=>  $a->cod_contract, 'tip_tranzactie' => 'Rata'])->all();
             $rata=0;
@@ -234,6 +300,7 @@ class Clienti extends \yii\db\ActiveRecord
             }
             
         }
+<<<<<<< HEAD
         
         public function areContractA($id)
         {
@@ -267,6 +334,8 @@ class Clienti extends \yii\db\ActiveRecord
         
         
     
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
       
         
     }

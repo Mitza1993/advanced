@@ -32,6 +32,7 @@ use frontend\models\Tranzactie;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'footerRowOptions'=>['style'=>'font-weight:bold;text-decoration: underline;'],
+<<<<<<< HEAD
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
@@ -41,11 +42,27 @@ use frontend\models\Tranzactie;
                     return $model->cod_contract;
                 },
             ],
+=======
+        // 'rowOptions' => function($model)
+        // {
+        //     if($model->tip_tranzactie == 'Cumparare')
+        //     {
+        //         return ['class' =>'danger'];
+        //     }
+            
+        // },
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
        		[
        			'attribute' => 'nume client',
        			'value' => function($model)
                 {
+<<<<<<< HEAD
                     return $model->getClientNume($model->id_client);
+=======
+                    return $model->getClient($model->id_client);
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                 },
        		],
             [
@@ -63,11 +80,15 @@ use frontend\models\Tranzactie;
 
                 	$suma = 0;
                 	foreach ($tranzactii as $key => $value) {
+<<<<<<< HEAD
                         if($value->tip_tranzactie!='Prelungire')
                         {
                             $suma += $value->suma;
                         }
                 		
+=======
+                		$suma += $value->suma;
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                 	}
 
                 	return $suma;
@@ -89,7 +110,10 @@ use frontend\models\Tranzactie;
                 },
        		],
        		"data_incheierii",
+<<<<<<< HEAD
            // "data_rambursarii",
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                 ],
     ]); ?>
 

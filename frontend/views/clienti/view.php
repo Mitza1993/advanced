@@ -2,7 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+<<<<<<< HEAD
 use frontend\models\Tranzactie;
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Clienti */
@@ -10,6 +13,7 @@ use frontend\models\Tranzactie;
 $this->title = $model->nume ." ". $model->prenume;
 //$this->params['breadcrumbs'][] = ['label' => 'Clientis', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
+<<<<<<< HEAD
 
 ?>
 <div class="clienti-view col-md-6 col-md-offset-3">
@@ -17,6 +21,14 @@ $this->title = $model->nume ." ". $model->prenume;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <!-- <p>
+=======
+?>
+<div class="clienti-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         <?= Html::a('Modifica', ['update', 'id' => $model->_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Sterge', ['delete', 'id' => $model->_id], [
             'class' => 'btn btn-danger',
@@ -25,7 +37,11 @@ $this->title = $model->nume ." ". $model->prenume;
                 'method' => 'post',
             ],
         ]) ?>
+<<<<<<< HEAD
     </p> -->
+=======
+    </p>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     <?= DetailView::widget([
         'model' => $model,
@@ -38,6 +54,7 @@ $this->title = $model->nume ." ". $model->prenume;
         ],
     ]) ?>
 
+<<<<<<< HEAD
 
 
     <?php 
@@ -129,3 +146,6 @@ $this->title = $model->nume ." ". $model->prenume;
     }
 
 </style>
+=======
+</div>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0

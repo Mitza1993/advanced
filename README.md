@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Yii 2 Advanced Application Template
 ===================================
 
@@ -95,3 +96,8 @@ the installed application. You only need to do these once for all.
 
 To login into the application, you need to first sign up, with any of your email address, username and password.
 Then, you can login into the application with same email address and password at any time.
+=======
+My first web application using Yii 2.0 Advanced Template
+This application is designed for pawnshops usage.
+Enjoy it!
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0

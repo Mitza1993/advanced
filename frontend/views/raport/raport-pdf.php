@@ -7,9 +7,12 @@
                 <thead>
                     <tr>
                         <th>
+<<<<<<< HEAD
                             Codul contractului
                         </th>
                         <th>
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                             Nume Cient
                         </th>
                         <th>
@@ -33,9 +36,12 @@
                 <?php foreach ($raport as $key => $value) { ?>
                     <tr>
                         <td>
+<<<<<<< HEAD
                             <?php echo $value['cod_contract'] ?>
                         </td>
                         <td>
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                             <?php echo $value['client'] ?>
                         </td>
                         <td>

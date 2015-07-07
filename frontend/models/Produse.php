@@ -40,7 +40,11 @@ class Produse extends \yii\db\ActiveRecord
         return [
             [['denumire', 'tip', 'unitate', 'cantitate', 'caracteristici', 'stare', 'situatie'], 'required','message'=>' Campul {attribute} nu poate fi gol.'],
             [['tip', 'unitate', 'caracteristici', 'stare'], 'string'],
+<<<<<<< HEAD
             [['cantitate'], 'number','message'=>'Cantitatea este de tip numeric.'],
+=======
+            [['cantitate'], 'integer','message'=>'Cantitatea este de tip numeric.'],
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             [['file'],'safe'],
             [['file'],'file','extensions' =>'jpg,gif,png'],
             [['denumire', 'situatie'], 'string', 'max' => 50]
@@ -88,6 +92,7 @@ class Produse extends \yii\db\ActiveRecord
         return $this->denumire;
     }
 
+<<<<<<< HEAD
 
 
     public function areContractA($cod)
@@ -118,5 +123,7 @@ class Produse extends \yii\db\ActiveRecord
 
         }
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     
 }

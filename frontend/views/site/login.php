@@ -9,7 +9,11 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
+<<<<<<< HEAD
 <div class="site-login col-md-6 col-md-offset-3">
+=======
+<div class="site-login">
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Introduceti-va datele de logare:</p>
@@ -23,6 +27,7 @@ $this->title = 'Login';
                 <div style="color:#999;margin:1em 0">
                    Daca v-ati uitat parola o puteti reseta accesand acest <?= Html::a('link', ['site/request-password-reset']) ?>.
                 </div>
+<<<<<<< HEAD
                 
             
         </div>
@@ -32,5 +37,12 @@ $this->title = 'Login';
                 </div>
         </div>
         <?php ActiveForm::end(); ?>
+=======
+                <div class="form-group">
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-success my-button', 'name' => 'login-button']) ?>
+                </div>
+            <?php ActiveForm::end(); ?>
+        </div>
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     </div>
 </div>

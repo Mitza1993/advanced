@@ -40,6 +40,7 @@ use frontend\controllers\ProduseController;
      '<div style="margin-top:20px;" align="center">'.Html::a('Amanetare', ['amanetare/create','cod_produs'=>$model->_cod], ['class'=>'btn btn-warning']) .'</div>';
                 },
             ],
+<<<<<<< HEAD
             // ['class' => 'yii\grid\ActionColumn',
             //       'template'=>'{view}{update}{delete}',
             //         'buttons'=>[
@@ -81,6 +82,8 @@ use frontend\controllers\ProduseController;
             //             }
             //       ] 
             // ]
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
            ['class' => 'yii\grid\ActionColumn'],
             

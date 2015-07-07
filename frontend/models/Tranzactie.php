@@ -60,7 +60,10 @@ class Tranzactie extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Amanetare::className(), ['cod_contract' => 'cod_contract_amanetare']);
     }
+<<<<<<< HEAD
 
 
     
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 }

@@ -40,6 +40,7 @@ class AngajatiController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+<<<<<<< HEAD
     public function actionIndex2()
     {
         $searchModel = new Angajati_Search();
@@ -50,6 +51,8 @@ class AngajatiController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     /**
      * Displays a single Angajati model.

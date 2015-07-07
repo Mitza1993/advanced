@@ -5,12 +5,19 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Clienti;
 use frontend\models\Clienti_Search;
+<<<<<<< HEAD
 use frontend\models\LogStergere;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\Amanetare;
 use frontend\models\VanzareCumparare;
+=======
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 /**
  * ClientiController implements the CRUD actions for Clienti model.
  */
@@ -50,12 +57,17 @@ class ClientiController extends Controller
      */
     public function actionView($id)
     {
+<<<<<<< HEAD
         $contract_V = VanzareCumparare::find()->where(['id_client'=>$id])->all();
         $contract_A = Amanetare::find()->where(['id_client'=>$id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
             'model2'=>$contract_A,
             'model3'=>$contract_V,
+=======
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         ]);
     }
 
@@ -68,6 +80,7 @@ class ClientiController extends Controller
     {
         $model = new Clienti();
 
+<<<<<<< HEAD
         if(Yii::$app->request->isAjax && $model->load($_POST))
         {
             Yii::$app->response->format='json';
@@ -76,6 +89,17 @@ class ClientiController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+=======
+        // if(Yii::$app->request->isAjax && $model->load($_POST))
+        // {
+        //     Yii::$app->response->format='json';
+        //     return \yii\widgets\ActiveForm::validate($model);
+        // }
+        // var_dump($model->errors);
+        // var_dump($_POST); die();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             return $this->redirect(['view', 'id' => $model->_id]);
         } else {
             return $this->render('create', [
@@ -111,6 +135,7 @@ class ClientiController extends Controller
      */
     public function actionDelete($id)
     {
+<<<<<<< HEAD
         $logModel = new LogStergere();
         $logModel->id_angajat = Yii::$app->user->id;
         $logModel->value = $id;
@@ -120,6 +145,8 @@ class ClientiController extends Controller
             var_dump($logModel->errors); die();
         }
 
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -140,7 +167,10 @@ class ClientiController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+<<<<<<< HEAD
 
 
    
+=======
+>>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 }
