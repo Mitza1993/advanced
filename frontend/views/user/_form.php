@@ -14,11 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-<<<<<<< HEAD
         <?= $form->field($model, 'username')->textInput() ?>
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

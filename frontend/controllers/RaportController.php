@@ -76,14 +76,11 @@ class RaportController extends Controller
         $query = new Query();
 
         $query
-<<<<<<< HEAD
+
             ->select(['amanetare.cod_contract', 'amanetare.suma_acordata', 'amanetare.suma_datorata', 'amanetare.data_incheierii','tranzactie.tip_tranzactie', 'SUM(tranzactie.suma) as suma_primita'])
             ->from('amanetare')
-=======
-            ->select(['amanetare.cod_contract', 'amanetare.suma_acordata', 'amanetare.suma_datorata', 'amanetare.data_incheierii', 'SUM(tranzactie.suma) as suma_primita'])
-            ->from('amanetare')
+            
             // ->asArray()
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             ->join('JOIN', 'tranzactie', 'amanetare.cod_contract = tranzactie.cod_contract_amanetare')
             ->where('amanetare.data_incheierii between "'.$startDate.' 00:00:00" and "'.$endDate.' 23:59:59"')
             ->groupBy("amanetare.cod_contract");
@@ -150,7 +147,7 @@ class RaportController extends Controller
 
     }
 
-<<<<<<< HEAD
+
     
 =======
     // public function actionMpdfdemo() {
@@ -168,7 +165,7 @@ class RaportController extends Controller
     //     ]);
     //     return $pdf->render();
     // }
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
 
     public function actionCreatepdf(){
         $mpdf=new mPDF('utf-8', 'A4-L');
@@ -176,13 +173,13 @@ class RaportController extends Controller
         $this->renderPDF();
         $mpdf->WriteHTML(ob_get_clean());
         $mpdf->Output();
-<<<<<<< HEAD
+
         exit; 
        
 =======
         exit;
         //return $this->renderPartial('mpdf');
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
     }
     
 
@@ -197,11 +194,11 @@ class RaportController extends Controller
 
             $data = array();
 
-<<<<<<< HEAD
+
             $data['client'] = $model->getClientNume($value->id_client);
 =======
             $data['client'] = $model->getClient($value->id_client);
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
             $data['angajat'] = $model->getAngajat($value->cod_angajat);
 
             $tranzactii = Tranzactie::find()->where(['cod_contract_amanetare' => $value->cod_contract])->all();
@@ -218,10 +215,10 @@ class RaportController extends Controller
             $data['rest_de_plata'] = $data['suma_datorata'] - $data['suma_primita'];
 
             $data['data'] = $value->data_incheierii;
-<<<<<<< HEAD
+
             $data['cod_contract']=$value->cod_contract;
 =======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
 
             array_push($raport, $data);
 

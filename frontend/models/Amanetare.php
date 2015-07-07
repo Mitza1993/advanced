@@ -5,10 +5,8 @@ use frontend\controllers\ProduseController;
 use frontend\controllers\ClientiController;
 use frontend\controllers\AngajatiController;
 use frontend\models\Tranzactie;
-<<<<<<< HEAD
+
 use \DateTime;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
 use Yii;
 
@@ -36,11 +34,10 @@ class Amanetare extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
+ 
     public static function tableName()
     {
         return 'amanetare';
@@ -54,31 +51,18 @@ class Amanetare extends \yii\db\ActiveRecord
         return [
             [['cod_angajat','suma_acordata', 'suma_datorata', 'comisionul_lunar', 'alte_specificatii', 'cod_produs'], 'required','message'=>'Campul {attribute} nu poate fi gol.'],
             // [['cod_angajat',  'cod_produs'], 'integer'],
-<<<<<<< HEAD
+
             [['data_incheierii', 'id_client'], 'safe'],
-=======
-            [['data_incheierii', 'id_client', 'data_rambursarii'], 'safe'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
             [['suma_acordata', 'suma_datorata', 'comisionul_lunar'], 'number','message'=>'{attribute} este format doar din cifre.'],
             [['alte_specificatii'], 'string']
         ];
     }
 
 
-<<<<<<< HEAD
-=======
-    // public function validatorData($attribute,$params)
-    // {
-    //     $date = new DateTime();
-    //     $today = $date->getTimestamp();
-    //     $selectedDate=$this->data_rambursarii;
-    //     if($selectedDate < $today)
-    //     {
-    //         $this->addError($attribute,'Data rambursarii nu poate fi mai mica decat ziua curenta.');
-    //     }
-    // }
 
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
+ 
     /**
      * @inheritdoc
      */
@@ -87,20 +71,13 @@ class Amanetare extends \yii\db\ActiveRecord
         return [
             'cod_contract' => 'Cod Contract',
             'cod_angajat' => 'Nume angajat',
-<<<<<<< HEAD
+
             'id_client' => 'Nume ',
             'data_incheierii' => 'Data Incheierii',
             'suma_acordata' => 'Suma acordata (lei)',
             'suma_datorata' => 'Suma datorata (lei)',
             'comisionul_lunar' => 'Comision (lei)',
-=======
-            'id_client' => 'Nume client',
-            'data_incheierii' => 'Data Incheierii',
-            'suma_acordata' => 'Suma acordata',
-            'suma_datorata' => 'Suma datorata',
-            'data_rambursarii' => 'Data rambursarii',
-            'comisionul_lunar' => 'Comision',
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
             'alte_specificatii' => 'Alte specificatii',
             'cod_produs' => 'Produsul contractat',
         ];
@@ -113,15 +90,14 @@ class Amanetare extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Produse::className(), ['_cod' => 'cod_produs']);
     }
-<<<<<<< HEAD
-    //get Produse
+
+ 
 
 
-    public function getProdusDenumire($id)
-=======
+  
 
     public function getProdus($id)
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
     {
         
         $produs = ProduseController::findModel($id);
@@ -129,7 +105,7 @@ class Amanetare extends \yii\db\ActiveRecord
         return $denumire;
     }
 
-<<<<<<< HEAD
+
     public function getProdusUM($id)
     {
         
@@ -147,10 +123,9 @@ class Amanetare extends \yii\db\ActiveRecord
     }
 
 
-     public function getClientNume($id2)
-=======
+     
      public function getClient($id2)
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
     {
         
         $client = ClientiController::findModel($id2);
@@ -158,7 +133,7 @@ class Amanetare extends \yii\db\ActiveRecord
         $prenume= $client->prenume;
         return $nume ."  ". $prenume;
     }
-<<<<<<< HEAD
+
     public function getClientAdresa($id2)
     {
         
@@ -174,8 +149,7 @@ class Amanetare extends \yii\db\ActiveRecord
         return $serie;
     }
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
 
      public function getAngajat($id2)
     {
@@ -212,7 +186,7 @@ class Amanetare extends \yii\db\ActiveRecord
     }
 
 
-<<<<<<< HEAD
+
     public function calculZile($cod_contract)
     {
                 $tranzactii = Tranzactie::find()->where(['cod_contract_amanetare' => $cod_contract])->all();
@@ -258,72 +232,7 @@ class Amanetare extends \yii\db\ActiveRecord
 
    
 }
-=======
-    public function actualizareProduse()
-     {
-        $models = Amanetare::find()->all();
-         $arr=array();
-       
-         foreach ($models as $m) {
-                $time = new \DateTime('now');
-                $today=$time->format('Y-m-d');
-             
-            //$tranzactie = Tranzactie::findOne(['cod_contract_amanetare'=>$m->cod_contract]);
-            $tPlata = Tranzactie::find()->where(['cod_contract_amanetare'=>  $m->cod_contract,'tip_tranzactie' => 'Plata finala'])->all();                         
-            $tRata = Tranzactie::find()->where(['cod_contract_amanetare'=>  $m->cod_contract, 'tip_tranzactie' => 'Rata'])->all();
-            $produs = Produse::findOne($m->cod_produs);
-            if($produs->situatie!='vandut'){
-            $rata =0;
-            $arr_length=count($tRata);
-            for($i=0;$i<$arr_length;$i++)
-            {
-                $rata = $rata+ $tRata[$i]->suma;
-                
 
-            }
-            
-
-            $plata =0;
-            $arr_length2=count($tPlata);
-            for($i=0;$i<$arr_length2;$i++)
-            {
-                $plata = $plata+ $tPlata[$i]->suma;
-            }
-
-            //cazul ratei
-            if($today > $m->data_rambursarii)
-            {
-                if($rata < $m->suma_datorata || $plata < $m->suma_datorata)
-                {
-                    $produs->situatie="in stoc";
-                    $produs->save();
-
-                }
-                else
-                    if($rata == $m->suma_datorata || $plata == $m->suma_datorata)
-                    {
-                        $produs->situatie="returnat";
-
-                        $produs->save();
-                    }
-            }   
-            else 
-            if ($today <= $m->data_rambursarii)
-            {
-                    if($rata == $m->suma_datorata || $plata == $m->suma_datorata)
-                    {
-                        $produs->situatie="returnat";
-                        $produs->save();
-                    }
-                    else{
-                $produs->situatie="amanetare";
-                $produs->save();}
-            }          
-        }
-    
-         }
-     
-     }
-
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+   
+ 
 }

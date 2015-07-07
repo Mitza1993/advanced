@@ -5,10 +5,8 @@ use frontend\controllers\ClientiController;
 use kartik\grid\GridView;
 use frontend\models\VanzareCumparare;
 use frontend\controllers\AngajatiController;
-<<<<<<< HEAD
 use frontend\models\Produse;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\Vanzare_Cumparare_Search */
@@ -20,7 +18,6 @@ use frontend\models\Produse;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<<<<<<< HEAD
 <?php 
 
     echo Html::a('Export as PDF', ['/vanzare-cumparare/createpdf2'], [
@@ -30,8 +27,6 @@ use frontend\models\Produse;
         'title'=>'Will open the generated PDF file in a new window'
     ]);
     ?>
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
 
     <?= GridView::widget([
@@ -48,7 +43,6 @@ use frontend\models\Produse;
             
         },
         'columns' => [
-<<<<<<< HEAD
            // ['class' => 'yii\grid\SerialColumn'],
         'cod_contract',
             [
@@ -60,7 +54,6 @@ use frontend\models\Produse;
                 'attribute'=>'Prenume',
                 'value'=>'idClient.prenume',
             ],
-=======
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'attribute'=>'id_client',
@@ -75,7 +68,6 @@ use frontend\models\Produse;
                 'value'=> 'codProdus.denumire',
             ],
 
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             [
             'attribute'=>'cod_angajat',
                 'value'=>function($model){
@@ -84,26 +76,23 @@ use frontend\models\Produse;
 
                 },
             ],
-<<<<<<< HEAD
             [
                 'attribute'=>'cod_produs',
                 'value'=> 'codProdus.denumire',
             ],
 
              'data_inchieierii',             
-=======
+
              //'tip_tranzactie',
              'data_inchieierii',
             // 'alte_specificatii:ntext',
              //'suma_contractata',
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
              [
     'attribute' => 'suma_contractata',
    // 'format' => "raw",
     'footer'=>VanzareCumparare::getTotal($dataProvider->models,'suma_contractata'),
 ],
         
-<<<<<<< HEAD
            ['class' => 'yii\grid\ActionColumn',
                   'template'=>'{view}{update}{delete}',
                     'buttons'=>[
@@ -145,9 +134,8 @@ use frontend\models\Produse;
                         }
                   ] 
             ]
-=======
+
             ['class' => 'yii\grid\ActionColumn'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         ],
     ]); ?>
 

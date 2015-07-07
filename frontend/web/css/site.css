@@ -16,10 +16,8 @@ body {
 
 .my-button{
     background-color: #3A3443;
-<<<<<<< HEAD
     margin-top: 50px;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 }
 .my-nav:hover{
     background-color: #3A3443;
@@ -114,13 +112,10 @@ a.desc:after {
 
 .ad-tranzactie{
     margin-left: 25px;
-<<<<<<< HEAD
 }
 
 .mygrid{
     width: 130px;
     text-align: center;
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 }

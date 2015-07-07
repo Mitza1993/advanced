@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Yii 2 Advanced Application Template
 ===================================
 
@@ -100,4 +100,4 @@ Then, you can login into the application with same email address and password at
 My first web application using Yii 2.0 Advanced Template
 This application is designed for pawnshops usage.
 Enjoy it!
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 

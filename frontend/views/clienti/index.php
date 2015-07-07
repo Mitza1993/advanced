@@ -30,7 +30,7 @@ $this->title = 'Clienti';
             //'seria_ci',
             // 'adresa',
              'telefon',
-<<<<<<< HEAD
+
             ['class' => 'yii\grid\ActionColumn',
                   'template'=>'{view}{update}{delete}',
                     'buttons'=>[
@@ -74,7 +74,7 @@ $this->title = 'Clienti';
             ]
 =======
             ['class' => 'yii\grid\ActionColumn'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
         ],
     ]); ?>
 

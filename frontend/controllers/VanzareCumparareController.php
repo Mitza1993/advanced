@@ -6,7 +6,7 @@ use Yii;
 use frontend\models\VanzareCumparare;
 use frontend\models\Angajati;
 use frontend\models\Produse;
-<<<<<<< HEAD
+
 use frontend\models\Clienti;
 use frontend\models\VanzareCumparare_Search;
 use frontend\controllers\ClientiController;
@@ -14,13 +14,12 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use mPDF;
-=======
+
 use frontend\models\VanzareCumparare_Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 /**
  * VanzareCumparareController implements the CRUD actions for VanzareCumparare model.
  */
@@ -178,7 +177,7 @@ class VanzareCumparareController extends Controller
     }
 
 
-<<<<<<< HEAD
+
     public function actionCreatepdf(){
         $mpdf=new mPDF('utf-8', 'A4-L');
         ob_start();
@@ -339,7 +338,6 @@ class VanzareCumparareController extends Controller
 
 
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 
 }

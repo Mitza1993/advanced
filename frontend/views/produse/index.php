@@ -16,11 +16,11 @@ $this->title = 'Produse';
 ?>
 <div class="produse-index">
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
+
+ 
     <h1>Afisare produse gestionate</h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -59,13 +59,9 @@ $this->title = 'Produse';
                     [
                     'attribute' => 'file',
                     'format'=> 'html',
-<<<<<<< HEAD
-                    'value' => function ($model) {
-                        return Html::img($model['foto'],
-=======
                     'value' => function ($data) {
                         return Html::img($data['foto'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
                             ['width' => '160px',
                                'height'=> '160px', ]);
                     },
@@ -73,7 +69,6 @@ $this->title = 'Produse';
                       [
                         'attribute' => 'Actiuni',
                         'format' => 'raw',
-<<<<<<< HEAD
                         'value' => function ($model) { 
                         if($model->areContractA($model->_cod)== true || $model->areContractVZ($model->_cod)==true)  
                         {
@@ -128,16 +123,10 @@ $this->title = 'Produse';
                   ] 
             ],
 
-                   //['class' => 'yii\grid\ActionColumn'],
-=======
-                        'value' => function ($model) {                      
-             return '<div style="margin-top:30px;"align="center">'.Html::a('Vanzare-Cumparare', ['vanzare-cumparare/create','cod_produs'=>$model->_cod], ['class'=>'btn btn-success']) .'</div>'.
-             '<div style="margin-top:20px;" align="center">'.Html::a('Amanetare', ['amanetare/create','cod_produs'=>$model->_cod], ['class'=>'btn btn-warning']) .'</div>';
-                        },
-                    ],
+                   //['class' => 'yii\grid\ActionColumn'],      
 
                    ['class' => 'yii\grid\ActionColumn'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
                     
         ],    
             ]); ?>

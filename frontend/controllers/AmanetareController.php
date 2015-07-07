@@ -12,11 +12,9 @@ use frontend\models\Angajati;
 use frontend\models\Produse;
 use frontend\models\Tranzactie;
 use frontend\controllers\ProduseController;
-<<<<<<< HEAD
+
 use mPDF;
 use \DateTime;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
 /**
  * AmanetareController implements the CRUD actions for Amanetare model.
@@ -44,7 +42,7 @@ class AmanetareController extends Controller
         $searchModel = new Amanetare_Search();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-<<<<<<< HEAD
+
         $contracte = Amanetare::find()->all();
 
         foreach ($contracte as $key => $contract) {
@@ -88,8 +86,6 @@ class AmanetareController extends Controller
 
         }
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -114,20 +110,18 @@ class AmanetareController extends Controller
      * @return mixed
      */
 
-<<<<<<< HEAD
+
 
 /// update dupa save
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
     public function actionCreate($cod_produs)
     {
     
         $model = new Amanetare();
         $produs2 = ProduseController::findModel($cod_produs);
-<<<<<<< HEAD
+
         
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
         $model->cod_produs=$produs2->_cod;
 
         if(Yii::$app->request->isAjax && $model->load($_POST))
@@ -140,7 +134,7 @@ class AmanetareController extends Controller
 
             $angajat = Angajati::find()->where(['id_user' => \Yii::$app->user->id])->one();
             $model->cod_angajat = $angajat->cod_angajat;
-<<<<<<< HEAD
+
            $model->suma_datorata=$model->suma_acordata + $model->comisionul_lunar + floatval(($model->suma_acordata *3/100));
 
             $model->save();
@@ -148,13 +142,12 @@ class AmanetareController extends Controller
 
             $produs = ProduseController::findModel($model->cod_produs);
             $produs->situatie="amanetare";
-=======
 
             $model->save(); 
 
             $produs = ProduseController::findModel($model->cod_produs);
             $produs->situatie="sub amanetare";
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
             $produs->save();
 
             return $this->redirect(['view', 'id' => $model->cod_contract]);
@@ -165,12 +158,11 @@ class AmanetareController extends Controller
         }
     }
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
+
     /**
      * Updates an existing Amanetare model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -218,7 +210,7 @@ class AmanetareController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-<<<<<<< HEAD
+
 
 
     public function actionCreatepdf3($cod_contract){
@@ -260,6 +252,5 @@ class AmanetareController extends Controller
 
 
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 }

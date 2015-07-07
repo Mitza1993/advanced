@@ -9,11 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="clienti-form">
-<<<<<<< HEAD
  <?php $form = ActiveForm::begin(['enableAjaxValidation'=>true]); ?>
-=======
- <?php $form = ActiveForm::begin(); ?>
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 <div class="row">
     <div class="col-md-6">
      <?= $form->field($model, 'nume')->textInput(['maxlength' => 50]) ?>
@@ -25,11 +21,8 @@ use yii\widgets\ActiveForm;
      <div class="col-md-6">
      <?= $form->field($model, 'seria_ci')->textInput(['maxlength' => 20]) ?>
 
-<<<<<<< HEAD
     <?= $form->field($model, 'adresa')->textInput(array('maxlength' => 100,'placeHolder'=>'Judet,Oras,Strada,nr.,bl.,ap.')) ?>
-=======
-    <?= $form->field($model, 'adresa')->textInput(['maxlength' => 100]) ?>
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 
     <?= $form->field($model, 'telefon')->textInput(['maxlength' => 20]) ?>
      </div>

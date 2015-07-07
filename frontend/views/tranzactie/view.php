@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Tranzactie */
 
-<<<<<<< HEAD
+
 $this->title ='Tranzactia nr. :'. $model->_id;
 //$this->params['breadcrumbs'][] = ['label' => 'Tranzacties', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
@@ -45,7 +45,7 @@ $this->title = $model->_id;
             ],
         ]) ?>
     </p>
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+ 
 
     <?= DetailView::widget([
         'model' => $model,

@@ -5,10 +5,8 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Produse;
 use frontend\models\Produse_Search;
-<<<<<<< HEAD
+
 use frontend\models\LogStergere;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -44,32 +42,25 @@ class ProduseController extends Controller
         {
             $situatie=$_POST['situatie'];
 
-<<<<<<< HEAD
+
             if($situatie == 'amanetare' || $situatie == 'vandut') {
                 $actions = 0;
                 $delete = 0;
             } else 
             {
-=======
             if($situatie == 'amanetat' || $situatie == 'vandut') {
                 $actions = 0;
                 $delete = 0;
             } else {
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
                 $actions = 1;
                 $delete = 1;
             }
 
-<<<<<<< HEAD
+
+           
+           
             $searchModel = new Produse_Search();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$situatie);
-            //?
-=======
-            $amanetare = new Amanetare();
-            $amanetare->actualizareProduse();
-            $searchModel = new Produse_Search();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$situatie);
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             $data['html'] = $this->renderPartial('partialindex', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider
@@ -83,12 +74,9 @@ class ProduseController extends Controller
         else
         {
             $situatie = 'in stoc';
-<<<<<<< HEAD
+
           
-=======
-            $amanetare = new Amanetare();
-            $amanetare->actualizareProduse();
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
             $searchModel = new Produse_Search();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$situatie);
             return $this->render('index', [
@@ -98,9 +86,8 @@ class ProduseController extends Controller
         }
        
     }
-<<<<<<< HEAD
-   
-=======
+
+
     // public function actionIndex2()
     // {
                
@@ -132,7 +119,6 @@ class ProduseController extends Controller
         return $id;
         echo "Id-ul ". $id;
     }
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
     /**
      * Displays a single Produse model.
      * @param integer $id
@@ -221,7 +207,7 @@ class ProduseController extends Controller
      */
     public function actionDelete($id)
     {
-<<<<<<< HEAD
+
         $logModel = new LogStergere();
         $logModel->id_angajat = Yii::$app->user->id;
         $logModel->value = $id;
@@ -230,8 +216,6 @@ class ProduseController extends Controller
             var_dump($logModel->errors); die();
         }
 
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

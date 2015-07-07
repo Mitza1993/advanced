@@ -5,10 +5,8 @@ use yii\grid\GridView;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use frontend\models\Clienti;
-<<<<<<< HEAD
 use frontend\models\Produse;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\Amanetare_Search */
@@ -17,11 +15,10 @@ use frontend\models\Produse;
 $this->title = 'Contracte de amanetare';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<<<<<<< HEAD
+
 <div class="amanetare-index ">
 =======
 <div class="amanetare-index">
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -35,7 +32,6 @@ $this->title = 'Contracte de amanetare';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-<<<<<<< HEAD
             'cod_contract',
             [
                 'attribute'=>'id_client',
@@ -43,19 +39,16 @@ $this->title = 'Contracte de amanetare';
             ],[
 
                 'attribute'=>'Prenume',
-                'value'=>'idClient.prenume',
-=======
+                'value'=>'idClient.prenume'],
             [
                 'attribute'=>'id_client',
                 'value'=>'idClient.nume',
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
             ],
             [
                 'attribute'=>'cod_produs',
                 'value'=>'codProdus.denumire',
             ],
             'data_incheierii',
-<<<<<<< HEAD
             'suma_acordata',
             'comisionul_lunar',
              'suma_datorata',
@@ -128,8 +121,7 @@ $this->title = 'Contracte de amanetare';
                             }
                         }
                   ] 
-            ]
-=======
+            ],
             'data_rambursarii',
             'suma_acordata',
              'suma_datorata',
@@ -145,7 +137,6 @@ $this->title = 'Contracte de amanetare';
             // 'cod_produs',
 
             ['class' => 'yii\grid\ActionColumn'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
         ],
     ]); ?>
 

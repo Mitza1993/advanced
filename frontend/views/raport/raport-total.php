@@ -33,10 +33,8 @@ $bU = \Yii::$app->homeUrl;
         <th>Total sume incasate</th>
         <th>Total sume platite</th>
         <th>Total sume ramase de primit</th>
-<<<<<<< HEAD
         <th>Total sume incasate din comisioane</th>
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
       </tr>
     </thead>
     <tbody id="raport-results-table">

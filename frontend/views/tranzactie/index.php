@@ -2,10 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-<<<<<<< HEAD
 use \DateTime;
-=======
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\Tranzactie_Search */
@@ -23,44 +21,14 @@ $this->title = 'Tranzactii efectuate';
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-<<<<<<< HEAD
-        //'filterModel' => $searchModel,
-
-        'columns' => [
-           // ['class' => 'yii\grid\SerialColumn'],
-
-            [
-                'attribute'=>'cod_contract_amanetare',
-                'value'=>'codContractAmanetare.idClient.nume',
-                'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
-=======
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute'=>'cod_contract_amanetare',
-                'value'=>'codContractAmanetare.idClient.nume',
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
-            ],
-            [
                 'attribute'=>'_id',
                 'value'=>'codContractAmanetare.idClient.prenume',
-<<<<<<< HEAD
                 'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
             ],
-            ['attribute' => 'suma',
-            'value'=> function($model){return $model->suma;},
-            'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
-                ],
-                ['attribute' => 'data',
-            'value'=> function($model){return $model->data;},
-            'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
-                ],
-                ['attribute' => 'tip_tranzactie',
-            'value'=> function($model){return $model->tip_tranzactie;},
-            'contentOptions' => ['style' => 'width: 130px;', 'class' => 'text-center'],
-                ],
-            
             
 
             ['attribute' => 'Export',
@@ -119,15 +87,14 @@ $this->title = 'Tranzactii efectuate';
             
 
            // ['class' => 'yii\grid\SerialColumn'],
-=======
-            ],
+            
             'suma',
             'data',
             'tip_tranzactie',
-            
+        
 
             ['class' => 'yii\grid\ActionColumn'],
->>>>>>> 1c9fa1dd40a0dbe2d794753bdcd615754b65fea0
+
         ],
     ]); ?>
 
